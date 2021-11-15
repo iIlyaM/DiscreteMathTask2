@@ -1,5 +1,10 @@
 package ru.vsu.cs.ilyam;
 
+import ru.vsu.cs.ilyam.search.BinarySearch;
+import ru.vsu.cs.ilyam.search.LinearSearch;
+import ru.vsu.cs.ilyam.sort.BubbleSort;
+import ru.vsu.cs.ilyam.sort.InsertionSort;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -10,9 +15,7 @@ public class Main {
     }
 
     private static void init() {
-        InsertionSort insertionSort = new InsertionSort();
-        BinarySearch binarySearch = new BinarySearch();
-        LinearSearch linearSearch = new LinearSearch();
+        BubbleSort bubbleSort = new BubbleSort();
         int size;
         int[] arr;
         printArrayStartInfo();
@@ -23,15 +26,13 @@ public class Main {
                 size = readArraySize();
                 arr = initRandomArray(size);
                 printArray(arr);
-                printInsertBinSort(arr, insertionSort, binarySearch);
-                printInsertLinSort(arr, insertionSort, linearSearch);
+                printBubbleSortResult(arr, bubbleSort);
                 break;
             case 2:
                 size = readArraySize();
                 arr = initArray(size);
                 printArray(arr);
-                printInsertBinSort(arr, insertionSort, binarySearch);
-                printInsertLinSort(arr, insertionSort, linearSearch);
+                printBubbleSortResult(arr, bubbleSort);
                 break;
         }
     }
@@ -93,6 +94,14 @@ public class Main {
         System.out.println("Отсортированный с помощью линейного поиска поиска массив : ");
         printArray(iSort.sort(arr, lSearch).getSortedArr());
         System.out.println("Количество сравнений : " + iSort.sort(arr, lSearch).getCount());
+        System.out.println("\n");
+    }
+
+    private static void printBubbleSortResult(int[] arr, BubbleSort bubbleSort) {
+        System.out.println("\n");
+        System.out.println("Отсортированный с помощью пузырьковой сортировки массив : ");
+        printArray(bubbleSort.sort(arr).getSortedArr());
+        System.out.println("Количество сравнений : " + bubbleSort.sort(arr).getCount());
         System.out.println("\n");
     }
 }

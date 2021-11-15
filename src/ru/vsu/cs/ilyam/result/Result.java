@@ -1,4 +1,4 @@
-package ru.vsu.cs.ilyam;
+package ru.vsu.cs.ilyam.result;
 
 public class Result {
     private int value;

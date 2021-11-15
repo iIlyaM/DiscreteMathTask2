@@ -1,4 +1,6 @@
-package ru.vsu.cs.ilyam;
+package ru.vsu.cs.ilyam.search;
+
+import ru.vsu.cs.ilyam.result.Result;
 
 public class LinearSearch {
 
