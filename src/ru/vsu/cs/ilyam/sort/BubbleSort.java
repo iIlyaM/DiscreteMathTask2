@@ -1,25 +1,28 @@
 package ru.vsu.cs.ilyam.sort;
 
 import ru.vsu.cs.ilyam.result.SortResult;
+import ru.vsu.cs.ilyam.result.SwapAndCompareCountResult;
 
 public class BubbleSort {
 
-    public SortResult sort(int[] arr) {
+    public SwapAndCompareCountResult sort(int[] arr) {
         int[] array = arr.clone();
         boolean isSorted = false;
-        int count = 0;
+        int countComparison = 0;
+        int countSwap = 0;
 
         while(!isSorted) {
             isSorted = true;
             for (int i = 0; i < array.length - 1; i++) {
-                count++;
+                countComparison++;
                 if(array[i] > array[i + 1]) {
                     isSorted = false;
                     swap(array, i, i + 1);
+                    countSwap++;
                 }
             }
         }
-        return new SortResult(array, count);
+        return new SwapAndCompareCountResult(array, countSwap, countComparison);
     }
 
     private void swap(int[] arr, int first, int second) {

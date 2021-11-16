@@ -4,6 +4,8 @@ import ru.vsu.cs.ilyam.search.BinarySearch;
 import ru.vsu.cs.ilyam.search.LinearSearch;
 import ru.vsu.cs.ilyam.sort.BubbleSort;
 import ru.vsu.cs.ilyam.sort.InsertionSort;
+import ru.vsu.cs.ilyam.sort.ShellSort;
+import ru.vsu.cs.ilyam.sort.shellsortutils.ShellStep;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -16,6 +18,7 @@ public class Main {
 
     private static void init() {
         BubbleSort bubbleSort = new BubbleSort();
+        ShellSort shellSort = new ShellSort();
         int size;
         int[] arr;
         printArrayStartInfo();
@@ -27,12 +30,14 @@ public class Main {
                 arr = initRandomArray(size);
                 printArray(arr);
                 printBubbleSortResult(arr, bubbleSort);
+                printShellSortResult(arr, shellSort);
                 break;
             case 2:
                 size = readArraySize();
                 arr = initArray(size);
                 printArray(arr);
                 printBubbleSortResult(arr, bubbleSort);
+                printShellSortResult(arr, shellSort);
                 break;
         }
     }
@@ -63,7 +68,7 @@ public class Main {
     private static int[] initRandomArray(int size) {
         int[] array = new int[size];
         for (int i = 0; i < array.length; i++) {
-            array[i] = (int) Math.round((Math.random() * 30));
+            array[i] = (int) Math.round((Math.random() * 100));
         }
         System.out.println("Сгенерированный массив : ");
         return array;
@@ -101,7 +106,30 @@ public class Main {
         System.out.println("\n");
         System.out.println("Отсортированный с помощью пузырьковой сортировки массив : ");
         printArray(bubbleSort.sort(arr).getSortedArr());
-        System.out.println("Количество сравнений : " + bubbleSort.sort(arr).getCount());
+        System.out.println("Количество сравнений : " + bubbleSort.sort(arr).getCountComparison());
+        System.out.println("Количество перестановок : " + bubbleSort.sort(arr).getCountSwap());
         System.out.println("\n");
+    }
+
+    private static void printShellSortResult(int[] arr, ShellSort shellSort) {
+        System.out.println("\n");
+        System.out.println("Отсортированный с помощью сортировки Шелла массив : ");
+        printArray(shellSort.sort(arr).getSortedArr());
+        System.out.println("Количество сравнений : " + shellSort.sort(arr).getCountSwap());
+        System.out.println("Количество перестановок : " + shellSort.sort(arr).getCountComparison());
+        System.out.println("\n");
+
+//        System.out.println("Отсортированный с помощью сортировки Шелла массив с шагом Хиббарда : ");
+//        printArray(shellSort.sort(arr, new HibbardStep(arr)).getSortedArr());
+//        System.out.println("Количество сравнений с шагом Хиббарда : " + shellSort.sort(arr, new HibbardStep(arr)).getCountSwap());
+//        System.out.println("Количество перестановок с шагом Хиббарда : " + shellSort.sort(arr, new HibbardStep(arr)).getCountComparison());
+//        System.out.println("\n");
+//
+//        System.out.println("Отсортированный с помощью сортировки Шелла массив с шагом Кнута : ");
+//        printArray(shellSort.sort(arr, new KnuthStep(arr)).getSortedArr());
+//        System.out.println("Количество сравнений с шагом Кнута: " + shellSort.sort(arr, new KnuthStep(arr)).getCountSwap());
+//        System.out.println("Количество перестановок с шагом Кнута : " + shellSort.sort(arr, new KnuthStep(arr)).getCountComparison());
+//        System.out.println("\n");
+
     }
 }
