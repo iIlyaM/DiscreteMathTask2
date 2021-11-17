@@ -10,10 +10,11 @@ public class BubbleSort {
         boolean isSorted = false;
         int countComparison = 0;
         int countSwap = 0;
+        int j = 0;
 
         while(!isSorted) {
             isSorted = true;
-            for (int i = 0; i < array.length - 1; i++) {
+            for (int i = 0; i < array.length - 1 - j; i++) {
                 countComparison++;
                 if(array[i] > array[i + 1]) {
                     isSorted = false;
@@ -21,6 +22,7 @@ public class BubbleSort {
                     countSwap++;
                 }
             }
+            j++;
         }
         return new SwapAndCompareCountResult(array, countSwap, countComparison);
     }

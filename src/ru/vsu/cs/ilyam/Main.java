@@ -115,8 +115,8 @@ public class Main {
         System.out.println("\n");
         System.out.println("Отсортированный с помощью сортировки Шелла массив : ");
         printArray(shellSort.sort(arr).getSortedArr());
-        System.out.println("Количество сравнений : " + shellSort.sort(arr).getCountSwap());
-        System.out.println("Количество перестановок : " + shellSort.sort(arr).getCountComparison());
+        System.out.println("Количество сравнений : " + shellSort.sort(arr).getCountComparison());
+        System.out.println("Количество перестановок : " + shellSort.sort(arr).getCountSwap());
         System.out.println("\n");
 
 //        System.out.println("Отсортированный с помощью сортировки Шелла массив с шагом Хиббарда : ");
